@@ -1,101 +1,188 @@
+"use client";
+
 import Image from "next/image";
+import { Instagram, Youtube } from "lucide-react";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const scrollToElement = useSmoothScroll();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+  return (
+    <main
+      className="min-h-screen bg-cover bg-center bg-fixed bg-[#ff7ae3]"
+      style={{ backgroundImage: "url('/background.jpg')" }}
+    >
+      <nav className="fixed top-0 left-0 right-0 bg-black bg-opacity-50 p-4 z-10">
+        <ul className="flex justify-center space-x-6">
+          <li>
+            <button
+              onClick={() => scrollToElement("about")}
+              className="text-white hover:text-pink-300 transition"
+            >
+              About Us
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToElement("portfolio")}
+              className="text-white hover:text-pink-300 transition"
+            >
+              Portfolio
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToElement("social")}
+              className="text-white hover:text-pink-300 transition"
+            >
+              Social Media
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToElement("contact")}
+              className="text-white hover:text-pink-300 transition"
+            >
+              Contact Us
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div className="container mx-auto px-4 py-20">
+        <header className="text-center mb-20">
+          <h1 className="text-6xl font-bold text-white mb-4">Fantasy</h1>
+          <p className="text-xl text-pink-200">K-pop Dance Group</p>
+        </header>
+
+        <section
+          id="about"
+          className="mb-20 p-6 bg-[#1b155a] bg-opacity-40 rounded-lg"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <h2 className="text-3xl font-bold mb-4">About Us</h2>
+          <p className="text-lg">
+            Fantasy is a dynamic K-pop dance group known for our electrifying
+            performances and precise choreography. Our passion for dance and
+            Korean pop culture brings together talented individuals to create
+            unforgettable experiences for our audience.
+          </p>
+        </section>
+
+        <section
+          id="portfolio"
+          className="mb-20 p-6 bg-[#1b155a] bg-opacity-40 rounded-lg"
         >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+          <h2 className="text-3xl font-bold mb-4">Portfolio</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <YouTubeVideo videoId="https://www.youtube.com/watch?v=FE6A5Dgloso" />
+            <YouTubeVideo videoId="VIDEO_ID_2" />
+            <YouTubeVideo videoId="VIDEO_ID_3" />
+            <YouTubeVideo videoId="VIDEO_ID_4" />
+          </div>
+        </section>
+
+        <section
+          id="social"
+          className="mb-20 p-6 bg-[#1b155a] bg-opacity-40 rounded-lg"
         >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <h2 className="text-3xl font-bold mb-4">Social Media</h2>
+          <div className="flex justify-center space-x-6">
+            <a
+              href="https://instagram.com/fantasy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-600"
+            >
+              <Instagram size={40} />
+            </a>
+            <a
+              href="https://tiktok.com/@fantasy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-600"
+            >
+              <Image
+                src="/tiktok-icon.png"
+                alt="TikTok"
+                width={40}
+                height={40}
+              />
+            </a>
+            <a
+              href="https://youtube.com/fantasy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-500 hover:text-pink-600"
+            >
+              <Youtube size={40} />
+            </a>
+          </div>
+        </section>
+
+        <section
+          id="contact"
+          className="mb-20 p-6 bg-[#1b155a] bg-opacity-40 rounded-lg"
+        >
+          <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
+          <form className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                className="w-full p-2 border rounded"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block mb-1">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                className="w-full p-2 border rounded"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="bg-pink-500 text-white px-4 py-2 rounded hover:bg-pink-600 transition"
+            >
+              Send Message
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+  );
+}
+
+function YouTubeVideo({ videoId }: { videoId: string }) {
+  return (
+    <div className="aspect-w-16 aspect-h-9">
+      <iframe
+        src={`https://www.youtube.com/embed/${videoId}`}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+        className="w-full h-full rounded"
+      ></iframe>
     </div>
   );
 }
