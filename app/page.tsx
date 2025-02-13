@@ -1,22 +1,29 @@
 "use client";
 
 import Image from "next/image";
-import { Instagram, Youtube } from "lucide-react";
-import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import { Youtube } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const scrollToElement = useSmoothScroll();
+  const router = useRouter();
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <main
-      className="min-h-screen bg-cover bg-center bg-fixed bg-[#ff7ae3]"
+      className="min-h-screen bg-cover bg-[#ff7ae3] bg-center bg-fixed"
       style={{ backgroundImage: "url('/background.jpg')" }}
     >
       <nav className="fixed top-0 left-0 right-0 bg-black bg-opacity-50 p-4 z-10">
         <ul className="flex justify-center space-x-6">
           <li>
             <button
-              onClick={() => scrollToElement("about")}
+              onClick={() => scrollToSection("about")}
               className="text-white hover:text-pink-300 transition"
             >
               About Us
@@ -24,7 +31,7 @@ export default function Home() {
           </li>
           <li>
             <button
-              onClick={() => scrollToElement("portfolio")}
+              onClick={() => scrollToSection("portfolio")}
               className="text-white hover:text-pink-300 transition"
             >
               Portfolio
@@ -32,7 +39,7 @@ export default function Home() {
           </li>
           <li>
             <button
-              onClick={() => scrollToElement("social")}
+              onClick={() => scrollToSection("social")}
               className="text-white hover:text-pink-300 transition"
             >
               Social Media
@@ -40,7 +47,7 @@ export default function Home() {
           </li>
           <li>
             <button
-              onClick={() => scrollToElement("contact")}
+              onClick={() => scrollToSection("contact")}
               className="text-white hover:text-pink-300 transition"
             >
               Contact Us
@@ -74,7 +81,7 @@ export default function Home() {
         >
           <h2 className="text-3xl font-bold mb-4">Portfolio</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <YouTubeVideo videoId="https://www.youtube.com/watch?v=FE6A5Dgloso" />
+            <YouTubeVideo videoId="VIDEO_ID_1" />
             <YouTubeVideo videoId="VIDEO_ID_2" />
             <YouTubeVideo videoId="VIDEO_ID_3" />
             <YouTubeVideo videoId="VIDEO_ID_4" />
@@ -93,7 +100,12 @@ export default function Home() {
               rel="noopener noreferrer"
               className="text-pink-500 hover:text-pink-600"
             >
-              <Instagram size={40} />
+              <Image
+                src="/instagram-icon.png"
+                alt="Instagram"
+                width={40}
+                height={40}
+              />
             </a>
             <a
               href="https://tiktok.com/@fantasy"
